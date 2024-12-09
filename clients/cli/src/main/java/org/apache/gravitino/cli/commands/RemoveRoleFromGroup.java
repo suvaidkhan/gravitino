@@ -24,7 +24,6 @@ import org.apache.gravitino.cli.ErrorMessages;
 import org.apache.gravitino.client.GravitinoClient;
 import org.apache.gravitino.exceptions.NoSuchMetalakeException;
 import org.apache.gravitino.exceptions.NoSuchRoleException;
-import org.apache.gravitino.exceptions.NoSuchUserException;
 
 /** Removes a role from a group. */
 public class RemoveRoleFromGroup extends Command {

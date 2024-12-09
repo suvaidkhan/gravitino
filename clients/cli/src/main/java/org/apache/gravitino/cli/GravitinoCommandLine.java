@@ -385,6 +385,8 @@ public class GravitinoCommandLine extends TestableCommandLine {
       String role = line.getOptionValue(GravitinoOptions.ROLE);
       if (role != null) {
         newRemoveRoleFromUser(url, ignore, metalake, user, role).handle();
+      } else {
+        newRemoveAllRolesFromUser(url, ignore, metalake, user).handle();
       }
     } else if (CommandActions.GRANT.equals(command)) {
       String role = line.getOptionValue(GravitinoOptions.ROLE);
@@ -420,6 +422,8 @@ public class GravitinoCommandLine extends TestableCommandLine {
       String role = line.getOptionValue(GravitinoOptions.ROLE);
       if (role != null) {
         newRemoveRoleFromGroup(url, ignore, metalake, group, role).handle();
+      } else {
+        newRemoveAllRolesFromGroup(url, ignore, metalake, group).handle();
       }
     } else if (CommandActions.GRANT.equals(command)) {
       String role = line.getOptionValue(GravitinoOptions.ROLE);

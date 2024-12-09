@@ -50,7 +50,7 @@ public class RemoveRoleFromGroup extends Command {
     this.role = role;
   }
 
-  /** Adds a role to a group. */
+  /** Removes a role from a group. */
   @Override
   public void handle() {
     try {
@@ -63,9 +63,6 @@ public class RemoveRoleFromGroup extends Command {
       return;
     } catch (NoSuchRoleException err) {
       System.err.println(ErrorMessages.UNKNOWN_ROLE);
-      return;
-    } catch (NoSuchUserException err) {
-      System.err.println(ErrorMessages.UNKNOWN_USER);
       return;
     } catch (Exception exp) {
       System.err.println(exp.getMessage());

@@ -22,6 +22,7 @@ package org.apache.gravitino.cli.commands;
 import java.util.List;
 import org.apache.gravitino.cli.ErrorMessages;
 import org.apache.gravitino.client.GravitinoClient;
+import org.apache.gravitino.exceptions.NoSuchGroupException;
 import org.apache.gravitino.exceptions.NoSuchMetalakeException;
 import org.apache.gravitino.exceptions.NoSuchUserException;
 
@@ -55,7 +56,7 @@ public class GroupDetails extends Command {
     } catch (NoSuchMetalakeException err) {
       System.err.println(ErrorMessages.UNKNOWN_METALAKE);
       return;
-    } catch (NoSuchUserException err) {
+    } catch (NoSuchGroupException err) {
       System.err.println(ErrorMessages.UNKNOWN_GROUP);
       return;
     } catch (Exception exp) {

@@ -27,11 +27,7 @@ import static org.mockito.Mockito.when;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.Options;
-import org.apache.gravitino.cli.commands.CreateUser;
-import org.apache.gravitino.cli.commands.DeleteUser;
-import org.apache.gravitino.cli.commands.ListUsers;
-import org.apache.gravitino.cli.commands.RemoveRoleFromUser;
-import org.apache.gravitino.cli.commands.UserDetails;
+import org.apache.gravitino.cli.commands.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -150,6 +146,25 @@ class TestUserCommands {
         .when(commandLine)
         .newRemoveRoleFromUser(
             GravitinoCommandLine.DEFAULT_URL, false, "metalake_demo", "user", "admin");
+    commandLine.handleCommandLine();
+    verify(mockRemove).handle();
+  }
+
+  @Test
+  void testRemoveAllRolesFromUserCommand() {
+    RemoveAllRolesFromUser mockRemove = mock(RemoveAllRolesFromUser.class);
+    when(mockCommandLine.hasOption(GravitinoOptions.METALAKE)).thenReturn(true);
+    when(mockCommandLine.getOptionValue(GravitinoOptions.METALAKE)).thenReturn("metalake_demo");
+    when(mockCommandLine.hasOption(GravitinoOptions.USER)).thenReturn(true);
+    when(mockCommandLine.getOptionValue(GravitinoOptions.USER)).thenReturn("user");
+    GravitinoCommandLine commandLine =
+            spy(
+                    new GravitinoCommandLine(
+                            mockCommandLine, mockOptions, CommandEntities.USER, CommandActions.REVOKE));
+    doReturn(mockRemove)
+            .when(commandLine)
+            .newRemoveAllRolesFromUser(
+                    GravitinoCommandLine.DEFAULT_URL, false, "metalake_demo", "user");
     commandLine.handleCommandLine();
     verify(mockRemove).handle();
   }

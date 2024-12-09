@@ -27,12 +27,7 @@ import static org.mockito.Mockito.when;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.Options;
-import org.apache.gravitino.cli.commands.AddRoleToGroup;
-import org.apache.gravitino.cli.commands.CreateGroup;
-import org.apache.gravitino.cli.commands.DeleteGroup;
-import org.apache.gravitino.cli.commands.GroupDetails;
-import org.apache.gravitino.cli.commands.ListGroups;
-import org.apache.gravitino.cli.commands.RemoveRoleFromGroup;
+import org.apache.gravitino.cli.commands.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -136,7 +131,7 @@ class TestGroupCommands {
   }
 
   @Test
-  void testRemoveRoleFromGroupCommand() {
+  void testRemoveAllRolesFromGroupCommand() {
     RemoveRoleFromGroup mockRemove = mock(RemoveRoleFromGroup.class);
     when(mockCommandLine.hasOption(GravitinoOptions.METALAKE)).thenReturn(true);
     when(mockCommandLine.getOptionValue(GravitinoOptions.METALAKE)).thenReturn("metalake_demo");
@@ -155,6 +150,26 @@ class TestGroupCommands {
     commandLine.handleCommandLine();
     verify(mockRemove).handle();
   }
+
+  @Test
+  void testRemoveAllRolesGroupCommand() {
+    RemoveAllRolesFromGroup mockRemove = mock(RemoveAllRolesFromGroup.class);
+    when(mockCommandLine.hasOption(GravitinoOptions.METALAKE)).thenReturn(true);
+    when(mockCommandLine.getOptionValue(GravitinoOptions.METALAKE)).thenReturn("metalake_demo");
+    when(mockCommandLine.hasOption(GravitinoOptions.GROUP)).thenReturn(true);
+    when(mockCommandLine.getOptionValue(GravitinoOptions.GROUP)).thenReturn("groupA");
+    GravitinoCommandLine commandLine =
+            spy(
+                    new GravitinoCommandLine(
+                            mockCommandLine, mockOptions, CommandEntities.GROUP, CommandActions.REVOKE));
+    doReturn(mockRemove)
+            .when(commandLine)
+            .newRemoveAllRolesFromGroup(
+                    GravitinoCommandLine.DEFAULT_URL, false, "metalake_demo", "groupA");
+    commandLine.handleCommandLine();
+    verify(mockRemove).handle();
+  }
+
 
   @Test
   void testAddRoleToGroupCommand() {

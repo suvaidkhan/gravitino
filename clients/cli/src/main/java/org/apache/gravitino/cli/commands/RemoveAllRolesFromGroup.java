@@ -1,11 +1,12 @@
 package org.apache.gravitino.cli.commands;
 
-import java.util.List;
 import org.apache.gravitino.cli.ErrorMessages;
 import org.apache.gravitino.client.GravitinoClient;
 import org.apache.gravitino.exceptions.NoSuchGroupException;
 import org.apache.gravitino.exceptions.NoSuchMetalakeException;
 import org.apache.gravitino.exceptions.NoSuchRoleException;
+
+import java.util.List;
 
 public class RemoveAllRolesFromGroup extends Command {
 
@@ -13,7 +14,7 @@ public class RemoveAllRolesFromGroup extends Command {
   protected String group;
 
   /**
-   * Gets all roles from a group and removes them.
+   * Removes all roles from a group
    *
    * @param url The URL of the Gravitino server.
    * @param ignoreVersions If true don't check the client/server versions match.

@@ -696,6 +696,12 @@ gcli user grant --user new_user --role admin
 gcli user revoke --user new_user --role admin
 ```
 
+#### Remove all roles from a user
+
+```bash
+gcli user revoke --user new_user
+```
+
 #### Add a role to a group
 
 ```bash
@@ -705,6 +711,11 @@ gcli group grant --group groupA --role admin
 #### Remove a role from a group
 ```bash
 gcli group revoke --group groupA --role admin
+```
+
+#### Remove all role from a group
+```bash
+gcli group revoke --group
 ```
 
 ### Topic commands

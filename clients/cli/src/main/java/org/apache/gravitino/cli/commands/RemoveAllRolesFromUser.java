@@ -1,11 +1,12 @@
 package org.apache.gravitino.cli.commands;
 
-import java.util.List;
 import org.apache.gravitino.cli.ErrorMessages;
 import org.apache.gravitino.client.GravitinoClient;
 import org.apache.gravitino.exceptions.NoSuchMetalakeException;
 import org.apache.gravitino.exceptions.NoSuchRoleException;
 import org.apache.gravitino.exceptions.NoSuchUserException;
+
+import java.util.List;
 
 public class RemoveAllRolesFromUser extends Command {
 
@@ -13,7 +14,7 @@ public class RemoveAllRolesFromUser extends Command {
   protected String user;
 
   /**
-   * Removes a role from a user.
+   * Removes all role from a user.
    *
    * @param url The URL of the Gravitino server.
    * @param ignoreVersions If true don't check the client/server versions match.

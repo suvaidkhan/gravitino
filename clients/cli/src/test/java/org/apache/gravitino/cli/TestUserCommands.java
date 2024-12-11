@@ -19,6 +19,12 @@
 
 package org.apache.gravitino.cli;
 
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.Options;
 import org.apache.gravitino.cli.commands.CreateUser;
@@ -29,8 +35,6 @@ import org.apache.gravitino.cli.commands.RemoveRoleFromUser;
 import org.apache.gravitino.cli.commands.UserDetails;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.mockito.Mockito.*;
 
 class TestUserCommands {
   private CommandLine mockCommandLine;

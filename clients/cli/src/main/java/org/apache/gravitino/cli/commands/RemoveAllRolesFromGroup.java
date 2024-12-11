@@ -1,12 +1,11 @@
 package org.apache.gravitino.cli.commands;
 
+import java.util.List;
 import org.apache.gravitino.cli.ErrorMessages;
 import org.apache.gravitino.client.GravitinoClient;
 import org.apache.gravitino.exceptions.NoSuchGroupException;
 import org.apache.gravitino.exceptions.NoSuchMetalakeException;
 import org.apache.gravitino.exceptions.NoSuchRoleException;
-
-import java.util.List;
 
 public class RemoveAllRolesFromGroup extends Command {
 
